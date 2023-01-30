@@ -35,6 +35,15 @@
             }
             return value;
         };
+        var addZero2 = function (value) {
+            if (value < 10) {
+                value = '0' + value;
+            }
+            if (value < 100) {
+                values = '00' + values;
+            }
+            return value;
+        };
 
         var timer_id;
 
@@ -66,14 +75,16 @@
             var minutes = Math.floor(seconds / 60);
             var hours = Math.floor(minutes / 60);
 
+            milli = milli - seconds * 1000;
             seconds = seconds - minutes * 60;
             minutes = minutes - hours * 60;
 
             hours = addZero(hours);
             seconds = addZero(seconds);
             minutes = addZero(minutes);
+            milli = addZero2(milli);
 
-            document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+            document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds + '.' + milli;
         }
 
 /*
